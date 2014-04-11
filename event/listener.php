@@ -35,7 +35,7 @@ class listener implements EventSubscriberInterface
 	protected $allow_guests = true;
 
 	/**
-	* Constructor (TODO)
+	* Constructor (TODO: cleanup)
 	*/
 	function prime_quick_style()
 	{
@@ -60,7 +60,7 @@ class listener implements EventSubscriberInterface
 	{
 		global $config, $user, $db, $phpbb_root_path, $phpEx;
 
-		if ($this->enabled && ($allow_guests || $user->data['is_registered']) && ($style = request_var('prime_quick_style', 0)))
+		if ($this->enabled && ($this->allow_guests || $user->data['is_registered']) && ($style = request_var('prime_quick_style', 0)))
 		{
 			$redirect_url = request_var('redirect', append_sid("{$phpbb_root_path}index.$phpEx"));
 			$style = ($config['override_user_style']) ? $config['default_style'] : $style;

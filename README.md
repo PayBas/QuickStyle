@@ -3,7 +3,7 @@ Prime Quick Style for phpBB 3.1
 
 Reworked and updated extension for phpBB to let visitors quickly switch board styles
 
-#### Ported Prime Quick Style for phpBB 3.0, by Ken F. Innes IV ([primehalo](http://www.absoluteanime.com/admin/mods.htm)
+#### Ported Prime Quick Style for phpBB 3.0, by Ken F. Innes IV ([primehalo](http://www.absoluteanime.com/admin/mods.htm))
 
 
 ## Features

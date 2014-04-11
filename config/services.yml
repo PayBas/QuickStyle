@@ -1,0 +1,5 @@
+services:
+    primehalo.quickstyle.listener:
+        class: primehalo\quickstyle\event\listener
+        tags:
+            - { name: event.listener }

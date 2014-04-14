@@ -25,61 +25,49 @@ class listener implements EventSubscriberInterface
 	static public function getSubscribedEvents()
 	{
 		return array(
-			'core.page_header_after' => 'select_style',
+			'core.common' => 'setup',
+			'core.page_header_after' => 'select_style_form',
 			'core.ucp_display_module_before' => 'switch_style',
 			'core.user_setup' => 'set_guest_style', 
 		);
 	}
 
-	protected $enabled = true;
-	protected $allow_guests = true;
-
-	/**
-	* Constructor (TODO: cleanup)
-	*/
-	function prime_quick_style()
-	{
-		global $config;
-
-		$this->enabled = (PRIME_QUICK_STYLE_ENABLED && !$config['override_user_style']) ? true : false;
-	}
+	protected $enabled;
+	protected $allow_guests;
 
 	/**
 	*/
-	public function request_cookie($name, $default = null)
+	public function setup($event)
 	{
 		global $config;
 
-		$name = $config['cookie_name'] . '_' . $name;
-		return request_var($name, $default, false, true);
+		$this->enabled = $config['override_user_style'] ? false : true;
+		$this->allow_guests = true; // make an option, later
 	}
 
 	/**
+	* The UCP event is only triggered when the user is logged in, so we have to set the guest cookie using some other event
 	*/
 	public function switch_style()
 	{
 		global $config, $user, $db, $phpbb_root_path, $phpEx;
 
-		if ($this->enabled && ($this->allow_guests || $user->data['is_registered']) && ($style = request_var('prime_quick_style', 0)))
+		if ($this->enabled &&  $style = request_var('prime_quick_style', 0))
 		{
 			$redirect_url = request_var('redirect', append_sid("{$phpbb_root_path}index.$phpEx"));
 			$style = ($config['override_user_style']) ? $config['default_style'] : $style;
-			if ($user->data['is_registered'])
-			{
-				$sql = 'UPDATE ' . USERS_TABLE . ' SET user_style = ' . intval($style) . ' WHERE user_id = ' . $user->data['user_id'];
-				$db->sql_query($sql);
-			}
-			else
-			{
-				$user->set_cookie('style', $style, 0);
-			}
+
+			$sql = 'UPDATE ' . USERS_TABLE . ' SET user_style = ' . intval($style) . ' WHERE user_id = ' . $user->data['user_id'];
+			$db->sql_query($sql);
+
 			redirect($redirect_url);
 		}
 	}
 
 	/**
+	* Assing the style switcher form variables
 	*/
-	public function select_style()
+	public function select_style_form()
 	{
 		global $config, $template, $user, $phpbb_root_path, $phpEx;
 
@@ -101,13 +89,35 @@ class listener implements EventSubscriberInterface
 	*/
 	public function set_guest_style($event)
 	{
-		global $user;
-		
-		$style = $event['style_id'];
+		global $config, $user, $phpbb_root_path, $phpEx;
 
 		if ($this->enabled && $this->allow_guests && $user->data['user_id'] == ANONYMOUS) // $user->data['is_registered'] may not be set at this point, such as if the user was banned
 		{
+			$style = $event['style_id'];
+
+			// Set the style to display
 			$event['style_id'] = ($style) ? $style : $this->request_cookie('style', intval($user->data['user_style']));
+
+			// Set the cookie (and redirect) when the style is switched
+			if ($style = request_var('prime_quick_style', 0))
+			{
+				$redirect_url = request_var('redirect', append_sid("{$phpbb_root_path}index.$phpEx"));
+				$style = ($config['override_user_style']) ? $config['default_style'] : $style;
+
+				$user->set_cookie('style', $style, 0);
+
+				redirect($redirect_url);
+			}
 		}
+	}
+
+	/**
+	*/
+	public function request_cookie($name, $default = null)
+	{
+		global $config;
+
+		$name = $config['cookie_name'] . '_' . $name;
+		return request_var($name, $default, false, true);
 	}
 }

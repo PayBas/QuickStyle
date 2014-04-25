@@ -2,13 +2,15 @@
 
 /**
 *
-* @package Prime Quick Style
-* @copyright (c) 2008-2014 Ken F. Innes IV
+* @package Quick Style
+* @copyright (c) 2014 PayBas
 * @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License v2
+*
+* Based on the original Prime Quick Style by Ken F. Innes IV (primehalo)
 *
 */
 
-namespace primehalo\quickstyle\event;
+namespace paybas\quickstyle\event;
 
 /**
 * @ignore
@@ -25,24 +27,27 @@ class listener implements EventSubscriberInterface
 	static public function getSubscribedEvents()
 	{
 		return array(
-			'core.common' => 'setup',
-			'core.page_header_after' => 'select_style_form',
-			'core.ucp_display_module_before' => 'switch_style',
-			'core.user_setup' => 'set_guest_style', 
+			'core.common'						=> 'setup',
+			'core.page_header_after'			=> 'select_style_form',
+			'core.ucp_display_module_before'	=> 'switch_style',
+			'core.user_setup'					=> 'set_guest_style', 
 		);
 	}
 
 	protected $enabled;
+	protected $default_loc;
 	protected $allow_guests;
 
 	/**
+	* Setup the common settings
 	*/
 	public function setup($event)
 	{
 		global $config;
 
 		$this->enabled = $config['override_user_style'] ? false : true;
-		$this->allow_guests = true; // make an option, later
+		$this->default_loc = $config['quickstyle_default_loc'] ? true : false;
+		$this->allow_guests = $config['quickstyle_allow_guests'] ? true : false;
 	}
 
 	/**
@@ -52,7 +57,7 @@ class listener implements EventSubscriberInterface
 	{
 		global $config, $user, $db, $phpbb_root_path, $phpEx;
 
-		if ($this->enabled &&  $style = request_var('prime_quick_style', 0))
+		if ($this->enabled &&  $style = request_var('quick_style', 0))
 		{
 			$redirect_url = request_var('redirect', append_sid("{$phpbb_root_path}index.$phpEx"));
 			$style = ($config['override_user_style']) ? $config['default_style'] : $style;
@@ -77,10 +82,11 @@ class listener implements EventSubscriberInterface
 			$style_options = style_select(request_var('style', (int)$current_style));
 			if (substr_count($style_options, '<option') > 1)
 			{
-				$user->add_lang_ext('primehalo/quickstyle', 'prime_quick_style');
+				$user->add_lang_ext('paybas/quickstyle', 'quickstyle');
 				$redirect = '&amp;redirect=' . urlencode(str_replace('&amp;', '&', build_url(array('_f_', 'style'))));
 				$template->assign_var('S_QUICK_STYLE_ACTION', append_sid("{$phpbb_root_path}ucp.$phpEx", 'i=prefs&amp;mode=personal' .  $redirect));
 				$template->assign_var('S_QUICK_STYLE_OPTIONS', ($config['override_user_style']) ? '' : $style_options);
+				$template->assign_var('S_QUICK_STYLE_DEFAULT_LOC', $this->default_loc);
 			}
 		}
 	}
@@ -99,7 +105,7 @@ class listener implements EventSubscriberInterface
 			$event['style_id'] = ($style) ? $style : $this->request_cookie('style', intval($user->data['user_style']));
 
 			// Set the cookie (and redirect) when the style is switched
-			if ($style = request_var('prime_quick_style', 0))
+			if ($style = request_var('quick_style', 0))
 			{
 				$redirect_url = request_var('redirect', append_sid("{$phpbb_root_path}index.$phpEx"));
 				$style = ($config['override_user_style']) ? $config['default_style'] : $style;

@@ -1,11 +1,12 @@
 <?php
+
 /**
 *
-* prime_quick_style [Indonesian]
-*
-* @package language
-* @copyright (c) 2008-2014 Ken F. Innes IV
+* @package Quick Style [Spanish]
+* @copyright (c) 2014 PayBas
 * @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License v2
+*
+* Based on the original Prime Quick Style by Ken F. Innes IV (primehalo)
 *
 */
 
@@ -35,7 +36,7 @@ if (empty($lang) || !is_array($lang))
 // in a url you again do not need to specify an order e.g., 'Click %sHERE%s' is fine
 
 $lang = array_merge($lang, array(
-	'PRIME_QUICK_STYLE'	=> 'Gaya',
+	'QUICK_STYLE'   => 'Estilo',
 ));
 
 ?>

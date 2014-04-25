@@ -1,26 +1,26 @@
-(Prime) Quick Style for phpBB 3.1
+Quick Style for phpBB 3.1
 ==========
 
 Extension for phpBB 3.1 to let visitors quickly switch board styles.
 
 ![Screenshot](screenshot.png)
 
-#### Ported Prime Quick Style for phpBB 3.0, by Ken F. Innes IV ([primehalo](http://www.absoluteanime.com/admin/mods.htm))
+#### Based on Prime Quick Style for phpBB 3.0, by Ken F. Innes IV ([primehalo](http://www.absoluteanime.com/admin/mods.htm))
 
 
 ## Features
 - Adds a drop-down selector to the header, which detects a selection change and triggers a board style change through the UCP.
 - Automatically redirects back to the original page being viewed after style has changed.
 - Works for guests too, but uses a special cookie instead.
+- ACP module to set guest access and whether to use the default template location: `EVENT overall_header_navigation_prepend`
 
 #### Requirements
 - >= phpBB 3.1-dev
-- >= PHP 5.4
+- >= PHP 5.3
 
 #### Languages supported
 - English
 - Spanish
-- Indian
 
 #### To do list
 - Choose a better template event to include it in the header. The current position is not ideal. Especially for responsive layout.
@@ -30,7 +30,7 @@ You can install this on the latest copy of the develop branch (phpBB 3.1-dev) by
 
 **Manual:**
 
-1. If there is not yet an `./ext/primehalo/quickstyle/` folder tree starting from your board root, create one.
+1. If there is not yet an `./ext/paybas/quickstyle/` folder tree starting from your board root, create one.
 2. Copy the entire contents of this repo into that folder you just created (You can leave out the *.md files, screenshot.png, .gitignore, and the .git folder).
 3. Go to `ACP -> Customise -> Manage extensions -> Extensions`
 4. Click Enable.
@@ -38,7 +38,7 @@ You can install this on the latest copy of the develop branch (phpBB 3.1-dev) by
 **Git:**
 
 1. From the board root run the following git command:
-`git clone https://github.com/paybas/QuickStyle.git ext/primehalo/quickstyle`
+`git clone https://github.com/paybas/QuickStyle.git ext/paybas/quickstyle`
 2. Go to `ACP -> Customise -> Manage extensions -> Extensions`
 3. Click Enable.
 

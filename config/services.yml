@@ -1,5 +1,5 @@
 services:
-    primehalo.quickstyle.listener:
-        class: primehalo\quickstyle\event\listener
+    paybas.quickstyle.listener:
+        class: paybas\quickstyle\event\listener
         tags:
             - { name: event.listener }

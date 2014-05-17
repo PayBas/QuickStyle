@@ -29,7 +29,7 @@ class quickstyle_info
 			'title'		=> 'QUICK_STYLE',
 			'version'	=> '1.3.0',
 			'modes'		=> array(
-				'settings'	=> array('title' => 'QUICK_STYLE_SETTINGS', 'auth' => 'acl_a_board', 'cat' => array('QUICK_STYLE')),
+				'settings'	=> array('title' => 'QUICK_STYLE_SETTINGS', 'auth' => 'ext_paybas/quickstyle && acl_a_board', 'cat' => array('QUICK_STYLE')),
 			),
 		);
 	}

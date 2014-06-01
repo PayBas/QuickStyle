@@ -27,7 +27,6 @@ class quickstyle_info
 		return array(
 			'filename'	=> '\paybas\quickstyle\acp\quickstyle_module',
 			'title'		=> 'QUICK_STYLE',
-			'version'	=> '1.3.0',
 			'modes'		=> array(
 				'settings'	=> array('title' => 'QUICK_STYLE_SETTINGS', 'auth' => 'ext_paybas/quickstyle && acl_a_board', 'cat' => array('QUICK_STYLE')),
 			),

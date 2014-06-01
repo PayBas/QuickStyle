@@ -1,5 +1,13 @@
 services:
     paybas.quickstyle.listener:
         class: paybas\quickstyle\event\listener
+        arguments:
+            - @config
+            - @dbal.conn
+            - @request
+            - @template
+            - @user
+            - %core.root_path%
+            - %core.php_ext%
         tags:
             - { name: event.listener }

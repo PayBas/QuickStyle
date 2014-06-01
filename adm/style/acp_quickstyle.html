@@ -9,18 +9,16 @@
 	<fieldset>
 		<legend>{L_QUICK_STYLE_SETTINGS}</legend>
 	<dl>
-		<dt><label for="quickstyle_default_loc">{L_QUICK_STYLE_DEFAULT_LOC}{L_COLON}</label><br />
-		<span>{L_QUICK_STYLE_DEFAULT_LOC_EXPLAIN}</span></dt></dt>
+		<dt><label for="quickstyle_default_loc">{L_QUICK_STYLE_DEFAULT_LOC}{L_COLON}</label><br /><span>{L_QUICK_STYLE_DEFAULT_LOC_EXPLAIN}</span></dt></dt>
 		<dd>
-			<label><input type="radio" class="radio" name="quickstyle_default_loc" id="quickstyle_default_loc" value="1"<!-- IF S_QUICKSTYLE_DEFAULT_LOC --> checked="checked"<!-- ENDIF --> /> {L_YES}</label>
+			<label><input type="radio" class="radio" name="quickstyle_default_loc" value="1" id="quickstyle_default_loc"<!-- IF S_QUICKSTYLE_DEFAULT_LOC --> checked="checked"<!-- ENDIF --> /> {L_YES}</label>
 			<label><input type="radio" class="radio" name="quickstyle_default_loc" value="0"<!-- IF not S_QUICKSTYLE_DEFAULT_LOC --> checked="checked"<!-- ENDIF --> /> {L_NO}</label>
 		</dd>
 	</dl>
 	<dl>
-		<dt><label for="quickstyle_allow_guests">{L_QUICK_STYLE_ALLOW_GUESTS}{L_COLON}</label><br />
-		<span>{L_QUICK_STYLE_ALLOW_GUESTS_EXPLAIN}</span></dt></dt>
+		<dt><label for="quickstyle_allow_guests">{L_QUICK_STYLE_ALLOW_GUESTS}{L_COLON}</label><br /><span>{L_QUICK_STYLE_ALLOW_GUESTS_EXPLAIN}</span></dt></dt>
 		<dd>
-			<label><input type="radio" class="radio" name="quickstyle_allow_guests" id="quickstyle_allow_guests" value="1"<!-- IF S_QUICKSTYLE_ALLOW_GUESTS --> checked="checked"<!-- ENDIF --> /> {L_YES}</label>
+			<label><input type="radio" class="radio" name="quickstyle_allow_guests" value="1" id="quickstyle_allow_guests"<!-- IF S_QUICKSTYLE_ALLOW_GUESTS --> checked="checked"<!-- ENDIF --> /> {L_YES}</label>
 			<label><input type="radio" class="radio" name="quickstyle_allow_guests" value="0"<!-- IF not S_QUICKSTYLE_ALLOW_GUESTS --> checked="checked"<!-- ENDIF --> /> {L_NO}</label>
 		</dd>
 	</dl>

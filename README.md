@@ -5,7 +5,7 @@ Extension for phpBB 3.1 to let visitors quickly switch board styles.
 
 ![Screenshot](screenshot.png)
 
-#### Based on Prime Quick Style for phpBB 3.0, by Ken F. Innes IV ([primehalo](http://www.absoluteanime.com/admin/mods.htm))
+##### Based on Prime Quick Style for phpBB 3.0, by Ken F. Innes IV ([primehalo](http://www.absoluteanime.com/admin/mods.htm))
 
 
 ## Features
@@ -15,37 +15,26 @@ Extension for phpBB 3.1 to let visitors quickly switch board styles.
 - ACP module to set guest access and whether to use the default template location: `EVENT overall_header_navigation_prepend`
 
 #### Requirements
-- >= phpBB 3.1-dev
-- >= PHP 5.3
+- phpBB 3.1-RC1 or higher
+- PHP 5.3.3 or higher
 
 #### Languages supported
 - English
-- Spanish
 
 #### To do list
 - Choose a better template event to include it in the header. The current position is not ideal. Especially for responsive layout.
+- Perhaps switch from an old-school <select> element to something more fancy.
 
 ## Installation
-You can install this on the latest copy of the develop branch (phpBB 3.1-dev) by following the steps below.
-
-**Manual:**
-
-1. If there is not yet an `./ext/paybas/quickstyle/` folder tree starting from your board root, create one.
-2. Copy the entire contents of this repo into that folder you just created (You can leave out the *.md files, screenshot.png, .gitignore, and the .git folder).
-3. Go to `ACP -> Customise -> Manage extensions -> Extensions`
-4. Click Enable.
-
-**Git:**
-
-1. From the board root run the following git command:
-`git clone https://github.com/paybas/QuickStyle.git ext/paybas/quickstyle`
-2. Go to `ACP -> Customise -> Manage extensions -> Extensions`
-3. Click Enable.
+1. [Download the latest release](https://github.com/PayBas/QuickStyle/releases) and unzip it.
+2. Copy the entire contents from the unzipped folder to `phpBB/ext/paybas/quickstyle/`.
+3. Navigate in the ACP to `Customise -> Manage extensions`.
+4. Find `Quick Style` under "Disabled Extensions" and click `Enable`.
 
 ## Uninstallation
-In the ACP -> Customise -> Manage Extensions -> Extensions module, you can click one of the following:
-- **Disable:** This keeps the Extension data and schema intact but prevents it from running. The whole thing kinda falls apart. The administration area will be unavailable. When you re-enable the extension, all functionality will become active again.
-- **Delete data:** This destroys any data added by the extension, and reverts any schema changes it made. You can re-enable the extension, but all the settings of this extension will be gone.
+1. Navigate in the ACP to `Customise -> Manage extensions`.
+2. Click the `Disable` link for `Quick Style`.
+3. To permanently uninstall, click `Delete Data`, then delete the `quickstyle` folder from `phpBB/ext/paybas/`.
 
 ### License
 [GNU General Public License v2](http://opensource.org/licenses/GPL-2.0)

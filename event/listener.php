@@ -96,7 +96,7 @@ class listener implements EventSubscriberInterface
 	*/
 	public function select_style_form()
 	{
-		if ($this->enabled && ($this->allow_guests || $user->data['is_registered']))
+		if ($this->enabled && ($this->allow_guests || $this->user->data['is_registered']))
 		{
 			$current_style = ($this->user->data['is_registered']) ? $this->user->data['user_style'] : $this->request_cookie('style', $this->user->data['user_style']);
 			$style_options = style_select($this->request->variable('style', (int)$current_style));

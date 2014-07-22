@@ -75,23 +75,6 @@ class listener implements EventSubscriberInterface
 	}
 
 	/**
-	* The UCP event is only triggered when the user is logged in, so we have to set the guest cookie using some other event
-	*/
-	public function switch_style()
-	{
-		if ($this->enabled && $style = $this->request->variable('quick_style', 0))
-		{
-			$redirect_url = $this->request->variable('redirect', append_sid("{$this->root_path}index.$this->phpEx"));
-			$style = ($this->config['override_user_style']) ? $this->config['default_style'] : $style;
-
-			$sql = 'UPDATE ' . USERS_TABLE . ' SET user_style = ' . intval($style) . ' WHERE user_id = ' . $this->user->data['user_id'];
-			$this->db->sql_query($sql);
-
-			redirect($redirect_url);
-		}
-	}
-
-	/**
 	* Assing the style switcher form variables
 	*/
 	public function select_style_form()
@@ -100,6 +83,7 @@ class listener implements EventSubscriberInterface
 		{
 			$current_style = ($this->user->data['is_registered']) ? $this->user->data['user_style'] : $this->request_cookie('style', $this->user->data['user_style']);
 			$style_options = style_select($this->request->variable('style', (int)$current_style));
+
 			if (substr_count($style_options, '<option') > 1)
 			{
 				$this->user->add_lang_ext('paybas/quickstyle', 'quickstyle');
@@ -109,6 +93,25 @@ class listener implements EventSubscriberInterface
 				$this->template->assign_var('S_QUICK_STYLE_OPTIONS', ($this->config['override_user_style']) ? '' : $style_options);
 				$this->template->assign_var('S_QUICK_STYLE_DEFAULT_LOC', $this->default_loc);
 			}
+		}
+	}
+
+	/**
+	* The UCP event is only triggered when the user is logged in, so we have to set the guest cookie using some other event
+	*/
+	public function switch_style()
+	{
+		if ($this->enabled && $style = $this->request->variable('quick_style', 0))
+		{
+			$style = ($this->config['override_user_style']) ? $this->config['default_style'] : $style;
+
+			$sql = 'UPDATE ' . USERS_TABLE . ' SET user_style = ' . intval($style) . ' WHERE user_id = ' . $this->user->data['user_id'];
+			$this->db->sql_query($sql);
+
+			// Redirect the user back to their last viewed page (non-AJAX requests)
+			$redirect = $this->request->variable('redirect', $this->user->data['session_page']);
+			$redirect = reapply_sid($redirect);
+			redirect($redirect);
 		}
 	}
 
@@ -127,12 +130,14 @@ class listener implements EventSubscriberInterface
 			// Set the cookie (and redirect) when the style is switched
 			if ($style = $this->request->variable('quick_style', 0))
 			{
-				$redirect_url = $this->request->variable('redirect', append_sid("{$this->root_path}index.$this->phpEx"));
 				$style = ($this->config['override_user_style']) ? $this->config['default_style'] : $style;
 
 				$this->user->set_cookie('style', $style, 0);
 
-				redirect($redirect_url);
+				// Redirect the user back to their last viewed page (non-AJAX requests)
+				$redirect = $this->request->variable('redirect', $this->user->data['session_page']);
+				$redirect = reapply_sid($redirect);
+				redirect($redirect);
 			}
 		}
 	}

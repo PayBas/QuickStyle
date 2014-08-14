@@ -13,11 +13,11 @@
 namespace paybas\quickstyle\acp;
 
 /**
-* @ignore
-*/
+ * @ignore
+ */
 if (!defined('IN_PHPBB'))
 {
-    exit;
+	exit;
 }
 
 class quickstyle_module
@@ -62,10 +62,10 @@ class quickstyle_module
 		}
 
 		$this->template->assign_vars(array(
-			'QUICKSTYLE_VERSION'		=> isset($this->config['quickstyle_version']) ? $this->config['quickstyle_version'] : '',
-			'S_QUICKSTYLE_DEFAULT_LOC'	=> isset($this->config['quickstyle_default_loc']) ? $this->config['quickstyle_default_loc'] : true,
-			'S_QUICKSTYLE_ALLOW_GUESTS'	=> isset($this->config['quickstyle_allow_guests']) ? $this->config['quickstyle_allow_guests'] : true,
-			'U_ACTION'					=> $this->u_action,
+			'QUICKSTYLE_VERSION'        => isset($this->config['quickstyle_version']) ? $this->config['quickstyle_version'] : '',
+			'S_QUICKSTYLE_DEFAULT_LOC'  => isset($this->config['quickstyle_default_loc']) ? $this->config['quickstyle_default_loc'] : true,
+			'S_QUICKSTYLE_ALLOW_GUESTS' => isset($this->config['quickstyle_allow_guests']) ? $this->config['quickstyle_allow_guests'] : true,
+			'U_ACTION'                  => $this->u_action,
 		));
 	}
 }

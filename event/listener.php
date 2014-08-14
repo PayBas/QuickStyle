@@ -13,11 +13,11 @@
 namespace paybas\quickstyle\event;
 
 /**
-* @ignore
-*/
+ * @ignore
+ */
 if (!defined('IN_PHPBB'))
 {
-    exit;
+	exit;
 }
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -38,10 +38,10 @@ class listener implements EventSubscriberInterface
 
 	/** @var \phpbb\user */
 	protected $user;
-	
+
 	/** @var string phpBB root path */
 	protected $root_path;
-	
+
 	/** @var string PHP extension */
 	protected $phpEx;
 
@@ -68,15 +68,15 @@ class listener implements EventSubscriberInterface
 	static public function getSubscribedEvents()
 	{
 		return array(
-			'core.page_header_after'			=> 'select_style_form',
-			'core.ucp_display_module_before'	=> 'switch_style',
-			'core.user_setup'					=> 'set_guest_style', 
+			'core.page_header_after'         => 'select_style_form',
+			'core.ucp_display_module_before' => 'switch_style',
+			'core.user_setup'                => 'set_guest_style',
 		);
 	}
 
 	/**
-	* Assing the style switcher form variables
-	*/
+	 * Assign the style switcher form variables
+	 */
 	public function select_style_form()
 	{
 		if ($this->enabled && ($this->allow_guests || $this->user->data['is_registered']))
@@ -89,7 +89,7 @@ class listener implements EventSubscriberInterface
 				$this->user->add_lang_ext('paybas/quickstyle', 'quickstyle');
 
 				$redirect = '&redirect=' . urlencode(str_replace(array('&amp;', '../app.'), array('&', 'app.'), build_url(array('_f_', 'style'))));
-				$this->template->assign_var('S_QUICK_STYLE_ACTION', append_sid("{$this->root_path}ucp.$this->phpEx", 'i=prefs&mode=personal' .  $redirect));
+				$this->template->assign_var('S_QUICK_STYLE_ACTION', append_sid("{$this->root_path}ucp.$this->phpEx", 'i=prefs&mode=personal' . $redirect));
 				$this->template->assign_var('S_QUICK_STYLE_OPTIONS', ($this->config['override_user_style']) ? '' : $style_options);
 				$this->template->assign_var('S_QUICK_STYLE_DEFAULT_LOC', $this->default_loc);
 			}
@@ -97,8 +97,8 @@ class listener implements EventSubscriberInterface
 	}
 
 	/**
-	* The UCP event is only triggered when the user is logged in, so we have to set the guest cookie using some other event
-	*/
+	 * The UCP event is only triggered when the user is logged in, so we have to set the guest cookie using some other event
+	 */
 	public function switch_style()
 	{
 		if ($this->enabled && $style = $this->request->variable('quick_style', 0))
@@ -116,8 +116,8 @@ class listener implements EventSubscriberInterface
 	}
 
 	/**
-	* Handle style switching by guests (not logged in visitors)
-	*/
+	 * Handle style switching by guests (not logged in visitors)
+	 */
 	public function set_guest_style($event)
 	{
 		if ($this->enabled && $this->allow_guests && $this->user->data['user_id'] == ANONYMOUS)
@@ -143,10 +143,11 @@ class listener implements EventSubscriberInterface
 	}
 
 	/**
-	*/
+	 */
 	public function request_cookie($name, $default = null)
 	{
 		$name = $this->config['cookie_name'] . '_' . $name;
+
 		return $this->request->variable($name, $default, false, 3);
 	}
 }

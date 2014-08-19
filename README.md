@@ -15,7 +15,7 @@ Extension for phpBB 3.1 to let visitors quickly switch board styles.
 - ACP module to set guest access and whether to use the default template location: `EVENT overall_header_navigation_prepend`
 
 #### Requirements
-- phpBB 3.1-RC2 or higher
+- phpBB 3.1-RC3 or higher
 - PHP 5.3.3 or higher
 
 #### Languages supported

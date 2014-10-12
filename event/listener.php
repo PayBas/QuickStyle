@@ -88,8 +88,8 @@ class listener implements EventSubscriberInterface
 			{
 				$this->user->add_lang_ext('paybas/quickstyle', 'quickstyle');
 
-				$redirect = '&redirect=' . urlencode(str_replace(array('&amp;', '../app.'), array('&', 'app.'), build_url(array('_f_', 'style'))));
-				$this->template->assign_var('S_QUICK_STYLE_ACTION', append_sid("{$this->root_path}ucp.$this->phpEx", 'i=prefs&mode=personal' . $redirect));
+				$redirect = '&amp;redirect=' . urlencode(str_replace(array('&amp;', '../'), array('&', ''), build_url('style')));
+				$this->template->assign_var('S_QUICK_STYLE_ACTION', append_sid("{$this->root_path}ucp.$this->phpEx", 'i=prefs&amp;mode=personal' . $redirect));
 				$this->template->assign_var('S_QUICK_STYLE_OPTIONS', ($this->config['override_user_style']) ? '' : $style_options);
 				$this->template->assign_var('S_QUICK_STYLE_DEFAULT_LOC', $this->default_loc);
 			}
@@ -109,7 +109,7 @@ class listener implements EventSubscriberInterface
 			$this->db->sql_query($sql);
 
 			// Redirect the user back to their last viewed page (non-AJAX requests)
-			$redirect = $this->request->variable('redirect', $this->user->data['session_page']);
+			$redirect = urldecode($this->request->variable('redirect', $this->user->data['session_page']));
 			$redirect = reapply_sid($redirect);
 			redirect($redirect);
 		}
@@ -135,7 +135,7 @@ class listener implements EventSubscriberInterface
 				$this->user->set_cookie('style', $style, 0);
 
 				// Redirect the user back to their last viewed page (non-AJAX requests)
-				$redirect = $this->request->variable('redirect', $this->user->data['session_page']);
+				$redirect = urldecode($this->request->variable('redirect', $this->user->data['session_page']));
 				$redirect = reapply_sid($redirect);
 				redirect($redirect);
 			}

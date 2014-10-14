@@ -20,6 +20,8 @@ Extension for phpBB 3.1 to let visitors quickly switch board styles.
 
 #### Languages supported
 - English
+- Spanish
+- Estonian
 
 #### To do list
 - Choose a better template event to include it in the header. The current position is not ideal. Especially for responsive layout.

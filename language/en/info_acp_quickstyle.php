@@ -43,4 +43,5 @@ $lang = array_merge($lang, array(
 	'QUICK_STYLE_DEFAULT_LOC_EXPLAIN'	=> 'By default, the Quick Style extension will insert the style switcher to the right of the breadcrumb navigation in the header. Setting this to "no" will allow you to include the quickstyle_event somewhere else in your style.',
 	'QUICK_STYLE_ALLOW_GUESTS'			=> 'Allow guests to change styles',
 	'QUICK_STYLE_ALLOW_GUESTS_EXPLAIN'	=> 'This setting will allow guest visitors to change styles as well. Since they are not logged-in, a cookie will be used to remember their selected style.',
+	'QUICK_STYLE_OVERRIDE_ENABLED'		=> 'The "Override user style" configuration setting is enabled on this board. The style switcher will not work until you disable it.',
 ));

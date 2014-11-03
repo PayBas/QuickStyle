@@ -88,8 +88,8 @@ class listener implements EventSubscriberInterface
 			{
 				$this->user->add_lang_ext('paybas/quickstyle', 'quickstyle');
 
-				$redirect = '&amp;redirect=' . urlencode(str_replace(array('&amp;', '../'), array('&', ''), build_url('style'))); // Build redirect URL
-				$action = append_sid("{$this->root_path}ucp.$this->phpEx", 'i=prefs&amp;mode=personal' . $redirect); // Build form submit URL + redirect
+				$redirect = 'redirect=' . urlencode(str_replace(array('&amp;', '../'), array('&', ''), build_url('style'))); // Build redirect URL
+				$action = append_sid("{$this->root_path}ucp.$this->phpEx", 'i=prefs&amp;mode=personal&amp;' . $redirect); // Build form submit URL + redirect
 				$action = preg_replace('/(?:&amp;|(\?))style=[^&]*(?(1)&amp;|)?/i', "$1", $action); // Remove style= param if it exists
 				$this->template->assign_var('S_QUICK_STYLE_ACTION', $action);
 				$this->template->assign_var('S_QUICK_STYLE_OPTIONS', ($this->config['override_user_style']) ? '' : $style_options);

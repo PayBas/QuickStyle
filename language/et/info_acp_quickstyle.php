@@ -43,4 +43,5 @@ $lang = array_merge($lang, array(
 	'QUICK_STYLE_DEFAULT_LOC_EXPLAIN'	=> 'Vaikimisi lisatakse stiilide kiirvalik paremale poole vastu breadcrumb navigatsooni. Seadistades selle väärtuseks "Ei" lubab sul lisada quickstyle_event ükskõik kuhu oma stiilile.',
 	'QUICK_STYLE_ALLOW_GUESTS'			=> 'Luba külalistel vahetada stiile',
 	'QUICK_STYLE_ALLOW_GUESTS_EXPLAIN'	=> 'Lubades selle, siis külalised saavad samuti muuta stiile. Kuna külalised ei ole sisselogitud, siis nende poolt valitud stiili mäletavad küpsised.',
+	'QUICK_STYLE_OVERRIDE_ENABLED'		=> 'The "Override user style" configuration setting is enabled on this board. The style switcher will not work until you disable it.',
 ));

@@ -54,6 +54,7 @@ class quickstyle_module
 		$template->assign_vars(array(
 			'S_QUICKSTYLE_DEFAULT_LOC'  => isset($config['quickstyle_default_loc']) ? $config['quickstyle_default_loc'] : true,
 			'S_QUICKSTYLE_ALLOW_GUESTS' => isset($config['quickstyle_allow_guests']) ? $config['quickstyle_allow_guests'] : true,
+			'S_OVERRIDE_USER_STYLE'     => isset($config['override_user_style']) ? $config['override_user_style'] : false,
 			'U_ACTION'                  => $this->u_action,
 		));
 	}

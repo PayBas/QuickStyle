@@ -3,8 +3,8 @@
     "type": "phpbb-extension",
     "description": "Adds a style dropdown box to the header of every page for quickly switching between styles. Based on the original Prime Quick Style by primehalo.",
     "homepage": "https://github.com/PayBas/QuickStyle",
-    "version": "1.3.3",
-    "time": "2014-10-13",
+    "version": "1.3.4",
+    "time": "2014-12-11",
     "license": "GPL-2.0",
     "authors": [
         {
@@ -27,7 +27,7 @@
     "extra": {
         "display-name": "Quick Style",
         "soft-require": {
-             "phpbb/phpbb": "3.1.*@dev"
+             "phpbb/phpbb": ">=3.1.2,<3.2.*@dev"
         },
         "version-check": {
             "host": "paybas.github.io",

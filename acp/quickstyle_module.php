@@ -12,14 +12,6 @@
 
 namespace paybas\quickstyle\acp;
 
-/**
- * @ignore
- */
-if (!defined('IN_PHPBB'))
-{
-	exit;
-}
-
 class quickstyle_module
 {
 	public $u_action;

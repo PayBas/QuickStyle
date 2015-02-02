@@ -12,21 +12,13 @@
 
 namespace paybas\quickstyle\migrations;
 
-/**
-* @ignore
-*/
-if (!defined('IN_PHPBB'))
-{
-    exit;
-}
-
 class release_1_3_0 extends \phpbb\db\migration\migration
 {
 	public function effectively_installed()
 	{
 		return isset($this->config['quickstyle_version']) && version_compare($this->config['quickstyle_version'], '1.3.0', '>=');
 	}
-	
+
 	public function update_data()
 	{
 		return array(
@@ -44,7 +36,7 @@ class release_1_3_0 extends \phpbb\db\migration\migration
 				'ACP_CAT_DOT_MODS',
 				'QUICK_STYLE'
 			)),
-	
+
 			array('module.add', array(
 				'acp',
 				'QUICK_STYLE',

@@ -12,14 +12,6 @@
 
 namespace paybas\quickstyle\event;
 
-/**
- * @ignore
- */
-if (!defined('IN_PHPBB'))
-{
-	exit;
-}
-
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class listener implements EventSubscriberInterface
@@ -91,9 +83,11 @@ class listener implements EventSubscriberInterface
 				$redirect = 'redirect=' . urlencode(str_replace(array('&amp;', '../'), array('&', ''), build_url('style'))); // Build redirect URL
 				$action = append_sid("{$this->root_path}ucp.$this->phpEx", 'i=prefs&amp;mode=personal&amp;' . $redirect); // Build form submit URL + redirect
 				$action = preg_replace('/(?:&amp;|(\?))style=[^&]*(?(1)&amp;|)?/i', "$1", $action); // Remove style= param if it exists
-				$this->template->assign_var('S_QUICK_STYLE_ACTION', $action);
-				$this->template->assign_var('S_QUICK_STYLE_OPTIONS', ($this->config['override_user_style']) ? '' : $style_options);
-				$this->template->assign_var('S_QUICK_STYLE_DEFAULT_LOC', $this->default_loc);
+				$this->template->assign_vars(array(
+					 'S_QUICK_STYLE_ACTION' => $action,
+					'S_QUICK_STYLE_OPTIONS' => ($this->config['override_user_style']) ? '' : $style_options,
+					'S_QUICK_STYLE_DEFAULT_LOC' => $this->default_loc,
+				));
 			}
 		}
 	}
@@ -146,7 +140,7 @@ class listener implements EventSubscriberInterface
 
 	/**
 	 */
-	public function request_cookie($name, $default = null)
+	private function request_cookie($name, $default = null)
 	{
 		$name = $this->config['cookie_name'] . '_' . $name;
 

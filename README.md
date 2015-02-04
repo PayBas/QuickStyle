@@ -45,4 +45,4 @@ Extension for phpBB 3.1 to let visitors quickly switch board styles.
 ### License
 [GNU General Public License v2](http://opensource.org/licenses/GPL-2.0)
 
-© 2014 - PayBas
+© 2015 - PayBas

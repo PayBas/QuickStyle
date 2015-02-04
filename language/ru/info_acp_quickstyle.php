@@ -2,7 +2,7 @@
 /**
  *
  * @package Quick Style
- * Russian translation by ???
+ * Russian translation by rxu
  *
  * @copyright (c) 2015 PayBas
  * @license GNU General Public License, version 2 (GPL-2.0)

@@ -1,15 +1,15 @@
 <?php
-
 /**
-*
-* @package Quick Style [Arabic]
-* @copyright (c) 2014 PayBas
-* @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License v2
-*
-* Based on the original Prime Quick Style by Ken F. Innes IV (primehalo)
-*
-* Translated By : Basil Taha Alhitary - www.alhitary.net
-*/
+ *
+ * @package Quick Style
+ * Arabic translation by Basil Taha Alhitary (www.alhitary.net)
+ *
+ * @copyright (c) 2015 PayBas
+ * @license GNU General Public License, version 2 (GPL-2.0)
+ *
+ * Based on the original Prime Quick Style by Ken F. Innes IV (primehalo)
+ *
+ */
 
 /**
 * DO NOT CHANGE

@@ -2,7 +2,7 @@
 /**
  *
  * @package Quick Style
- * Estonian translation by phpBBeesti (phpBBeesti.com)
+ * Croatian translation by Ančica Sečan (http://ancica.sunceko.net)
  *
  * @copyright (c) 2015 PayBas
  * @license GNU General Public License, version 2 (GPL-2.0)
@@ -37,5 +37,5 @@ if (empty($lang) || !is_array($lang))
 // in a url you again do not need to specify an order e.g., 'Click %sHERE%s' is fine
 
 $lang = array_merge($lang, array(
-	'QUICK_STYLE'	=> 'Stiil',
+	'QUICK_STYLE'	=> 'Stil',
 ));

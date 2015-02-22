@@ -43,6 +43,6 @@ $lang = array_merge($lang, array(
 	'QUICK_STYLE_DEFAULT_LOC'			=> 'Utiliser l’emplacement par défaut du style',
 	'QUICK_STYLE_DEFAULT_LOC_EXPLAIN'	=> 'Par défaut, l’extension style rapide positionne le menu déroulant de changement de style en haut de la page à droite de la barre de navigation après le fil d’Ariane. Paramétrer sur “non” permettra de placer quickstyle_event à un autre endroit dans votre style.',
 	'QUICK_STYLE_ALLOW_GUESTS'			=> 'Permettre au invités de changer le style',
-	'QUICK_STYLE_ALLOW_GUESTS_EXPLAIN'	=> 'Ce réglage permettra aux visiteurs de changer aussi le styles. Puisqu’ils ne sont pas connectés, un cookie sera utilisé pour se souvenir du dernier style sélectionné.',
-	'QUICK_STYLE_OVERRIDE_ENABLED'		=> 'Le paramètre “Annuler le style de l’utilisateur” est activé sur ce forum. Le changement de style ne fonctionnera pas jusqu’à ce que vous le désactivez.',
+	'QUICK_STYLE_ALLOW_GUESTS_EXPLAIN'	=> 'Ce réglage permettra aux visiteurs de changer aussi le style. Puisqu’ils ne sont pas connectés, un cookie sera utilisé pour se souvenir du dernier style sélectionné.',
+	'QUICK_STYLE_OVERRIDE_ENABLED'		=> 'Le paramètre “Annuler le style de l’utilisateur” est activé sur ce forum. Le changement de style ne fonctionnera pas jusqu’à ce que vous le désactiviez.',
 ));

@@ -1,0 +1,17 @@
+.style_form
+{
+    /*padding: 5px;*/
+}
+
+.style-wrapper
+{
+    display:inline-block;
+	vertical-align:middle; 
+	margin-top: auto;
+}
+
+
+.style-wrapper label
+{
+    color: #F9F9F9;
+}
